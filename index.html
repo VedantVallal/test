@@ -1,6 +1,4 @@
-<h1>123</h1>
-<h1>456</h1>
-<h1>456</h1>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +7,56 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+        
+    </style>
 
-    vvvmvvhvvh
+    <div class="cont">
+
+        <button class="on">ON</button>
+        <div class="box"></div>
+        <button class="off">OFF</button>
+    </div>
+
+   <script>
+    
+    let cont = document.querySelector(".cont");
+    let box = document.querySelector(".box");
+
+    
+    Object.assign(box.style,
+        {
+            height:"10vh",
+            width:"10vh",
+            border:"2px solid black",
+            borderRadius:"50px"
+        }
+    )
+    Object.assign(cont.style,{
+        display :"flex",
+        gap:"10vh",
+        justifyContent :"center",
+        alignItem:"center"
+    }
+
+    )
+
+    let on=document.querySelector(".on");
+    let off=document.querySelector(".off");
+
+    on.addEventListener("click",()=>{
+        box.style.backgroundColor="black";
+    })
+
+    off.addEventListener("click",()=>{
+        box.style.backgroundColor="white";
+    })
+
+
+
+
+
+
+   </script>
 </body>
 </html>
