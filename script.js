@@ -1,7 +1,7 @@
 const fs = require("fs");
 const http = require("http")
 
-const server = http.createServer((req,res)=>{
+const userserver = (req,res)=>{
 
     res.setHeader("content-Type" , "text/html");
     console.log(req.method,req.url)
@@ -73,9 +73,6 @@ const server = http.createServer((req,res)=>{
         
 
     }
-})
+}
 
-
-server.listen(3000,()=>{
-    console.log("Server Running on http:localhost:3000");
-})
+module.exports = userserver;
