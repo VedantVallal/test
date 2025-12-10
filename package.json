@@ -1,0 +1,20 @@
+{
+  "name": "sample",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/VedantVallal/test#readme",
+  "bugs": {
+    "url": "https://github.com/VedantVallal/test/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VedantVallal/test.git"
+  },
+  "license": "ISC",
+  "author": "vedant vallal",
+  "type": "commonjs",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
