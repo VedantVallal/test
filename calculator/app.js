@@ -5,5 +5,5 @@ const fun = require('./hadler')
 const server = http.createServer(fun)
 
 server.listen(3000,()=>{
-    console.log("http/localhost:3000")
+    console.log("http/localhost:3001")
 })
