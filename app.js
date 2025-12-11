@@ -1,50 +1,82 @@
 const express = require("express");
-
+const fs = require("fs");
 const app = express();
 
 app.use(express.urlencoded({extended:true}))
+// First Dummy Middleware 
+app.use((req,res,next)=>{
+    if (req.url.startsWith('/.well-known') || req.url === '/favicon.ico') {
+    return next();
+}
 
-app.get("/about",(req,res,next)=>{
-    console.log("middleware - First 1")
-    res.send(`
-        
-                  <html>
-            <head>
-            <title>Home</title>
-            </head>
-            <body>
-              <form action="/about" method="POST">
-              <label> UserName : </label>
-              <input type="text" id="name" name="username" placeholder="Enter your Name">
-              <br>
-              <label> Male: </label>
-              <input type="radio" id="male" name="gender" value="male">
+    console.log("1. First Middleware",req.url,req.method);
+    next();
+})
 
-              
-              <label> Female : </label>
-              <input type="radio" id="Female" name="gender" value="Female">
-              <br>
-              <button type="submit">Submit</button>
-              
-              </form>
-            </body>
-            </html>
-        
-        `)
+// Second Dummy Middleware 
+app.use((req,res,next)=>{
+    if (req.url.startsWith('/.well-known') || req.url === '/favicon.ico') {
+    return next();
+}
+
+    console.log("2. Second Middleware",req.url,req.method);
+    next();
+})
+
+app.use((req,res,next)=>{
+    if (req.url.startsWith('/.well-known') || req.url === '/favicon.ico') {
+    return next();
+}
+
+    console.log("3. Third Middleware",req.url,req.method);
+    // res.send("<h1>This is Third Middleware</h1>")
     next()
 })
 
 
-app.post("/about",(req,res,next)=>{
-    console.log("middleware - Second 2") 
-      // Data Store in Chunks 
-            
-            res.send(`<h1> Welcome to our app ${req.body.username} </h1>`)
-    
-    
+// main middlewares 
+
+app.get("/",(req,res,next)=>{
+    console.log("4. Fourth Middleware");
+    next();
 })
 
-// App listen 
+app.get("/contact",(req,res,next)=>{
+    console.log("5  . Fiftth Middleware Contact");
+    res.send(`
+        <h1>Wlcome to contact us page fill this detals </h1>
+
+        <form action="/contact" method="POST">
+        <input type="text" name ="name" placeholder="Enter Your Name">
+        
+        <input type="email" name ="Email" placeholder="Email">
+        <button type="Submit">Submit</button>
+        </form>
+        `)
+
+})
+
+
+app.post("/contact",(req,res,next)=>{
+    console.log("6  . Sixth Middleware Contact");
+    const data = `
+    Name : ${req.body.name},
+    Email : ${req.body.Email}
+    ------------------------------------------------
+    `;
+    fs.appendFile("data.txt",data,(err)=>{
+        console.log(err);
+    });
+    res.send(` <h1>
+        
+        Thanku For Submitting the form ${req.body.name}
+        </h1>
+        `)
+
+})
+
+
+
 app.listen(3000,()=>{
-    console.log("http/localhost:3000");
+    console.log("http/localhost:3000")
 })
