@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+  
+<body>
+
+   <%- include('partial_nav') %>
+
+    <h1>WelCome to Home These are Following List of the Homes :- </h1>
+<ul>
+  <% if (homes && homes.length > 0) { %>
+    <% homes.forEach(item => { %>
+      <li><%= item.home %></li>
+    <% }) }%>
+
+</ul>
+
+</body>
+</html>
